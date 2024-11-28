@@ -1,0 +1,23 @@
+{
+  "name": "Java Spring Boot Rest API",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "developer",
+  "runServices": [
+    "base",
+    "developer"
+  ],
+  "initializeCommand": "./setup_env.sh",
+  "workspaceFolder": "/home/${localEnv:USER}/workspace",
+  "shutdownAction": "stopCompose",
+  "overrideCommand": true,
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "phind.phind",
+        "Codeium.codeium",
+        "jasew.vscode-helix-emulation"
+      ]
+    }
+  }
+}

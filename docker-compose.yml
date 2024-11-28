@@ -1,0 +1,24 @@
+services:
+  base:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    image: base:latest
+  developer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: developer
+      args:
+        - USER=${USER}
+        - UID=${UID}
+        - GID=${GID}
+    image: developer:latest
+    env_file: .env
+    volumes:
+      - .:/home/${USER}/workspace
+      - ~/.ssh:/home/${USER}/.ssh
+      - ~/.zshrc:/home/${USER}/.zshrc
+    depends_on:
+      - base
