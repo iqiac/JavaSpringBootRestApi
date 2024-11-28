@@ -2,7 +2,6 @@
 FROM fedora:latest AS base
 
 ENV JAVA_VERSION=latest
-ENV GRADLE_VERSION=8.11.1
 
 # Dependencies for building
 RUN dnf install -y \

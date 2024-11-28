@@ -3,7 +3,6 @@
   "dockerComposeFile": "../docker-compose.yml",
   "service": "developer",
   "runServices": [
-    "base",
     "developer"
   ],
   "initializeCommand": "./setup_env.sh",
