@@ -3,7 +3,7 @@
   "dockerComposeFile": "../docker-compose.yml",
   "service": "developer",
   "runServices": [
-    "developer"
+    "developer", "mysql"
   ],
   "initializeCommand": "./setup_env.sh",
   "workspaceFolder": "/home/${localEnv:USER}/workspace",

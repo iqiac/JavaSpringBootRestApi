@@ -1,10 +1,28 @@
 services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
+    ports:
+      - 3306:3306
+    networks:
+      - spring-boot
+
   base:
     build:
       context: .
       dockerfile: Dockerfile
       target: base
     image: base:latest
+    container_name: base
+    networks:
+      - spring-boot
+
   developer:
     build:
       context: .
@@ -15,6 +33,7 @@ services:
         - UID=${UID}
         - GID=${GID}
     image: developer:latest
+    container_name: developer
     env_file: .env
     volumes:
       - .:/home/${USER}/workspace
@@ -22,3 +41,11 @@ services:
       - ~/.zshrc:/home/${USER}/.zshrc
     depends_on:
       - base
+    ports:
+      - 8080:8080
+    networks:
+      - spring-boot
+
+networks:
+  spring-boot:
+    driver: bridge
