@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController // indicates that this class is a controller for RESTful API requests
+@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("/api/v1") // base URL for all requests
 public class ProductController {
   private final ProductService productService;
